@@ -36,6 +36,18 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func SeeInMapApp(_ sender: UIButton) {
+        let placemark = MKPlacemark(coordinate: self.mapLocation, addressDictionary: nil)
+        let mapitem = MKMapItem(placemark: placemark)
+        mapitem.name = "A really icy place"
+        mapitem.openInMaps(launchOptions: [
+            MKLaunchOptionsMapCenterKey: MKMapType.standard.rawValue,
+            MKLaunchOptionsMapCenterKey: self.map.region.center,
+            MKLaunchOptionsMapSpanKey: self.map.region.span
+        ])
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
